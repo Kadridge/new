@@ -1,0 +1,26 @@
+/* 
+    Document   : new
+    Created on : 18 août 2013, 14:37:06
+    Author     : Nico
+    Description:
+        Purpose of the stylesheet follows.
+*/
+html, body{
+    background: #f9f7e9;
+}
+body > .container { 
+    margin-top: 70px;
+}
+
+/*
+ * Style twaks
+ * --------------------------------------------------
+ */
+
+   img {
+          display: block;
+          height: auto;
+          max-width: 100%;
+   }
+
+   
