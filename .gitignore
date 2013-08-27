@@ -1,3 +1,5 @@
 tmp/*
 app/tmp/*
+app/Config/email.php
+app/Config/database.php
 !empty
