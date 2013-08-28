@@ -18,7 +18,7 @@
                     <li class=""><?php echo $this->Html->link("<span class='glyphicon glyphicon-user'></span>"." ".AuthComponent::user('username') . "" . "'s profile", array('controller' => 'users', 'action' => 'edit'), array('escape'=>false)); ?></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Nav header</li>
-                    <li class=""><?php echo $this->Html->link('<span class="glyphicon glyphicon-off"></span>  Logout', array('controller' => 'users', 'action' => 'logout'), array('escape' => false)); ?></li>
+                    <li class=""><?php echo $this->Html->link('<span class="glyphicon glyphicon-off"></span>  Logout', array('controller' => 'users', 'action' => 'logout', 'admin'=>false, 'user'=>false), array('escape' => false)); ?></li>
                     <li><a href="#">Example</a></li>
                   </ul>
                 </li>

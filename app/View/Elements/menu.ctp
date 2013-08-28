@@ -14,7 +14,6 @@
             <?php if(AuthComponent::user('id')): ?>
             <li class=""><?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); ?></li>
             <li class=""><?php echo $this->Html->link('Profile', array('controller' => 'users', 'action' => 'edit')); ?></li>
-            <li class=""><?php echo $this->Html->link('Admin', array('controller' => 'posts', 'action' => 'index', 'admin' => true)); ?></li>
             <?php else: ?>
             <li class=""><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); ?></li>
             <li class=""><?php echo $this->Html->link('SignUp', array('controller' => 'users', 'action' => 'signup')); ?></li>

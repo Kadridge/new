@@ -62,8 +62,8 @@ class UsersController extends AppController {
         if(!empty($user)){
             $this->User->id = $user['User']['id'];
             $this->User->saveField('active', 1);
-            $this->Session->setFlash("Your account has been activated", 'flash_success');
-            $this->Auth->login($user['User']);
+            $this->Session->setFlash("Your account has been activated, you can now login", 'flash_success');
+            //$this->Auth->login($user['User']);
         }else{
             $this->Session->setFlash("Error, your account can't be activated", 'flash_error');
         }
@@ -193,5 +193,15 @@ class UsersController extends AppController {
    public function user_index(){
        
    }
+   public function admin_delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+
+        if ($this->User->delete($id)) {
+            $this->Session->setFlash(__('The post with id: %s has been deleted.', h($id)), 'flash_success');
+            return $this->redirect($this->referer());
+        }
+    }
 }
 ?>
