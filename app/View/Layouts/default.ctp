@@ -47,8 +47,16 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 </head>
 <body>
     <div class="container">
-      <?php echo !empty($this->request->params['admin']) ? $this->element('menuadmin') : $this->element('menu'); ?>
-        
+      <?php //echo !empty($this->request->params['admin']) ? $this->element('menuadmin') : $this->element('menu'); ?>
+      <?php
+              if(AuthComponent::user('Group')['name'] && AuthComponent::user('Group')['name'] == 'admin'){
+                  echo $this->element('menuadmin');
+              }elseif(AuthComponent::user('Group')['name'] && AuthComponent::user('Group')['name'] == 'user'){
+                 echo $this->element('menuuser'); 
+              }else{
+                 echo $this->element('menu');
+              }
+      ?>
       <?php echo $this->Session->flash(); ?>
       <?php echo $this->fetch('content'); ?>
 

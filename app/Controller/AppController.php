@@ -53,11 +53,12 @@ class AppController extends Controller {
     public function beforeFilter() {
         //debug($this->request->params); die();
         $this->Auth->loginAction = array('controller'=>'users', 'action'=>'login', 'user'=>false, 'admin'=>false);
+        $this->Auth->logoutAction = array('controller'=>'users', 'action'=>'logout', 'user'=>false, 'admin'=>false);
         $this->Auth->authorize = array('Controller');
         
-        if(isset($this->request->params['prefix']) && $this->request->params['prefix'] == 'admin'){
+        /*if(isset($this->request->params['prefix']) && $this->request->params['prefix'] == 'admin'){
             $this->layout = 'admin';
-        }
+        }*/
         
         if(!isset($this->request->params['prefix'])){
             $this->Auth->allow();

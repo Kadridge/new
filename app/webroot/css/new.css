@@ -16,9 +16,12 @@ body > .container {
  * Style twaks
  * --------------------------------------------------
  */
-
+ img.carousel.thumbnail{
+     display: inline-block;
+ }
+ 
    img {
-          display: block;
+          display: inline-block;
           height: auto;
           max-width: 100%;
    }

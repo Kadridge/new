@@ -9,9 +9,9 @@ class PostsController extends AppController {
     public function index() {
         
         $posts = $this->Post->find('all', array(
-            'contain' => array('Thumb')
+            'contain' => array('Thumb', 'User', 'User.Thumb'),
+            'fields' => array('Post.title', 'Post.body', 'Post.id', 'Post.user_id','Thumb.*', 'User.*')
         ));
-        
         $this->set('posts', $posts);
     }
     
@@ -29,20 +29,20 @@ class PostsController extends AppController {
         }
 
         $post = $this->Post->find('first', array(
-            'conditions' => array('Post.id ='=> $id),
-            'fields' => array('Post.id', 'Post.title', 'Post.body', 'Post.created', 'Post.user_id','Thumb.file'),
-            'contain' => array('Thumb', 'Media'),
+            'contain' => array('Thumb', 'User', 'User.Thumb', 'Media'),
+            'fields' => array('Post.title', 'Post.created','Post.body', 'Post.id', 'Post.user_id','Thumb.*', 'User.*'),
+            'conditions' => array('Post.id' => $id)
         ));
-        $user = $this->Post->User->find('first', array(
+        /*$user = $this->Post->User->find('first', array(
             'contain' => array('Post', 'Thumb', 'User'),
             'fields' => array('Thumb.file','User.username'),
             'conditions' => array('User.id' => $post['Post']['user_id'])
-        ));
+        ));*/
         if (!$post) {
             throw new NotFoundException(__('Invalid post'), 'flash_error');
         }
         //debug($user);
-        $this->set(array('post', 'user'), array($post, $user));
+        $this->set('post', $post);
     }
     
         public function edit($id = null){

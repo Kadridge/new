@@ -1,11 +1,33 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
            <ul class="bxslider">
+               <?php //debug($posts); die(); ?>
           <?php foreach($posts as $v):?>
-            <li><?php echo $this->Media->image($v['Post']['thumb'], 1100, 500, array('title' => $v['Post']['title'])); ?></li>
+            <li><?php echo $this->Media->image($v['Post']['thumb'], 1100, 500, array('title' => $this->Media->image($v['User']['Thumb']['file'], 50, 50, array('class'=>'carousel thumbnail')) ." ". $v['Post']['title'] ." ". $this->Html->link('View', array('action' => 'view', 'controller'=>'posts', $v['Post']['id']), array('class'=>'btn btn-primary pull-right')))); ?></li>
             <?php endforeach; ?>
         </ul>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-lg-12">
+          <img class="img-rounded" src="data:image/png;base64," data-src="holder.js/50x50" alt="Generic placeholder image">
+          <h4>Lionel</h4>
+          <p>Realized 4 wishes</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-xs-4 col-sm-4 col-lg-12">
+          <img class="img-rounded" src="data:image/png;base64," data-src="holder.js/50x50" alt="Generic placeholder image">
+          <h4>Martin</h4>
+          <p>Realized 42 wishes</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-xs-4 col-sm-4 col-lg-12">
+          <img class="img-rounded" src="data:image/png;base64," data-src="holder.js/50x50" alt="Generic placeholder image">
+          <h4>Etienne</h4>
+          <p>Realized 48 wishes</p>
+
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
         </div>
     </div>
     
@@ -43,6 +65,7 @@
         $(document).ready(function() {
             $('.bxslider').bxSlider({
                 auto: true,
+                captions: true
             });
         });
     </script>
