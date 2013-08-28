@@ -26,4 +26,15 @@ body > .container {
           max-width: 100%;
    }
 
+   div.well.white{
+       background-color: #FFFFFF;
+   }
+   
+   .infothumbnail{
+       margin-top: 10px;
+   }
+   
+   .sidebarpostview, .bodypostview{
+       margin-top: 20px;
+   }
    
