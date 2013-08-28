@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 27 Août 2013 à 23:17
+-- Généré le: Mer 28 Août 2013 à 12:25
 -- Version du serveur: 5.5.25
 -- Version de PHP: 5.4.4
 
@@ -50,7 +50,7 @@ CREATE TABLE `medias` (
   `file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=59 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=60 ;
 
 --
 -- Contenu de la table `medias`
@@ -61,7 +61,8 @@ INSERT INTO `medias` (`id`, `ref`, `ref_id`, `file`, `position`) VALUES
 (47, 'Post', 37, '/uploads/Posts/37/wallpaper_1642736.jpg', 0),
 (49, 'Post', 50, '/uploads/Posts/50/wallpaper_1486486.jpg', 0),
 (57, 'User', 23, '/uploads/User/23/wallpaper_1642736.jpg', 0),
-(58, 'User', 1, '/uploads/User/1/gosling.jpg', 0);
+(58, 'User', 1, '/uploads/User/1/gosling.jpg', 0),
+(59, 'Post', 51, '/uploads/Posts/51/wallpaper_3021814.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,7 @@ CREATE TABLE `posts` (
   `user_id` int(11) NOT NULL,
   `active` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
 
 --
 -- Contenu de la table `posts`
@@ -88,7 +89,8 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `title`, `body`, `created`, `modified`, `media_id`, `user_id`, `active`) VALUES
 (36, 'Voiture', '<p>blalv</p>\r\n', '2013-08-25 22:05:31', '2013-08-25 22:06:04', 46, 1, 1),
 (37, 'dqsdqd', '<p>dqdq</p>\r\n', '2013-08-25 22:07:51', '2013-08-25 22:08:13', 47, 23, 1),
-(50, 'test', '<p>test</p>\r\n', '2013-08-27 21:52:11', '2013-08-27 21:52:49', 49, 23, 1);
+(50, 'test', '<p>test</p>\r\n', '2013-08-27 21:52:11', '2013-08-27 21:52:49', 49, 23, 1),
+(51, 'Mon super article', '<p>Coucou</p>\r\n', '2013-08-28 11:49:17', '2013-08-28 11:51:26', 59, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -138,6 +140,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `mail`, `password`, `group_id`, `media_id`, `firstname`, `lastname`, `created`, `modified`, `lastlogin`, `active`) VALUES
-(1, 'admin', 'kadridge@yopmail.com', 'ed6cc70e392916e05049f3d7c3bd00e3e8f69974', 1, 58, 'admin', 'admin', '2013-08-17 20:00:26', '2013-08-27 22:45:20', '2013-08-27 19:55:57', 1),
-(23, 'kadridge', 'chomel.nicolas@gmail.com', 'e8c44de787da2421072499948cfe243d258da114', 1, 57, 'Kadridge', 'kadridge', '2013-08-26 19:04:44', '2013-08-27 22:45:00', '2013-08-27 21:13:27', 1),
+(1, 'admin', 'kadridge@yopmail.com', 'ed6cc70e392916e05049f3d7c3bd00e3e8f69974', 1, 58, 'admin', 'admin', '2013-08-17 20:00:26', '2013-08-28 12:13:51', '2013-08-28 12:13:51', 1),
+(23, 'kadridge', 'chomel.nicolas@gmail.com', 'e8c44de787da2421072499948cfe243d258da114', 2, 57, 'Kadridge', 'kadridge', '2013-08-26 19:04:44', '2013-08-28 10:52:02', '2013-08-28 10:52:02', 1),
 (24, 'test', 'test@test.com', '4d5fb6ee9957ff46f092733f7dc181c72b56f4c1', 3, 0, 'test', 'test', '2013-08-26 19:04:44', '2013-08-27 19:48:21', '2013-08-27 19:48:21', 1);
