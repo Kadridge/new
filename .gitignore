@@ -4,5 +4,5 @@ app/Config/email.php
 app/Config/database.php
 !empty
 /app/Config/
-/app/webroot/Bdd/
-/app/webroot/uploads/
+/app/webroot/Bdd/*
+/app/webroot/uploads/*
