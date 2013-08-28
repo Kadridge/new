@@ -5,3 +5,4 @@ app/Config/database.php
 !empty
 /app/Config/
 /app/webroot/Bdd/
+/app/webroot/uploads/
