@@ -62,13 +62,11 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
       <hr>
 
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
-
     </div><!--/.container-->
 
-
+          <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -2,7 +2,7 @@
 
 class Tag extends AppModel {
     
-    public $belongsTo = 'Post';
+    public $hasAndBelongsTo = 'Post';
     
     
 }

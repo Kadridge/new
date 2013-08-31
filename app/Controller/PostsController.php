@@ -29,15 +29,11 @@ class PostsController extends AppController {
         }
 
         $post = $this->Post->find('first', array(
-            'contain' => array('Thumb', 'User', 'User.Thumb', 'Media'),
+            'contain' => array('Thumb', 'User', 'User.Thumb', 'Media', 'Tag'),
             'fields' => array('Post.title', 'Post.created','Post.body', 'Post.id', 'Post.user_id','Thumb.*', 'User.*'),
             'conditions' => array('Post.id' => $id)
         ));
-        /*$user = $this->Post->User->find('first', array(
-            'contain' => array('Post', 'Thumb', 'User'),
-            'fields' => array('Thumb.file','User.username'),
-            'conditions' => array('User.id' => $post['Post']['user_id'])
-        ));*/
+        //debug($post);
         if (!$post) {
             throw new NotFoundException(__('Invalid post'), 'flash_error');
         }
@@ -85,7 +81,32 @@ class PostsController extends AppController {
                 $userid = $this->Auth->user('id');
                 $this->request->data = $this->Post->getDraft('post', $userid);
             }
-            
+            $d['tags'] = $this->Post->PostTag->find('all',array(
+                'contain' => array('Tag'),
+                'conditions' => array('PostTag.post_id' => $id)
+            ));
+            $this->set($d);
+    }
+    
+    /* create the search by tag page */
+    public function tag($name){
+        $this->loadModel('PostTag');
+        $this->PostTag->recursive = 0;
+        $this->PostTag->contain('Tag');
+        $posts = $this->Paginate('PostTag', array('Tag.name'=>$name));
+        $posts_ids = Set::combine($posts, '{n}.PostTag.post_id', '{n}.PostTag.post_id');
+        $d['posts'] = $this->Post->find('all', array(
+            'contain' => array('Thumb', 'User', 'User.Thumb'),
+            'conditions' => array('Post.id'=> $posts_ids),
+            'fields' => array('Post.title', 'Post.body', 'Post.id', 'Post.user_id','Thumb.*', 'User.username', 'User.media_id')
+        ));
+        $d['name'] = $name;
+        $this->set($d);
+    }
+
+
+    public function admin_delTag($id = null){
+        $this->Post->PostTag->delete($id);
     }
     
         public function admin_delete($id) {
